@@ -24,6 +24,9 @@ import java.util.Map;
  * 员工管理
  */
 @RestController
+//结合了 @Controller 和 @ResponseBody 注解
+//注解标识的方法返回的对象会自动被转换为JSON或XML格式，并写入响应体中
+//省去在每个方法上添加 @ResponseBody 注解的步骤
 @RequestMapping("/admin/employee")
 @Slf4j
 @Api(tags = "员工相关接口")
@@ -91,7 +94,7 @@ public class EmployeeController {
      */
     @GetMapping("/page")
     @ApiOperation(value = "员工分页查询")
-    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){
+    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){//传入的不是json，不需要转换
         log.info("员工分页查询，参数是：{}", employeePageQueryDTO);
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
