@@ -79,7 +79,7 @@ public class DishServiceImpl implements DishService {
 
     /**
      * 菜品批量删除
-     * @param dishPageQueryDTO
+     * @param
      * @return
      */
     @Override
@@ -99,13 +99,17 @@ public class DishServiceImpl implements DishService {
         }
 
         //删除菜品表中的菜品数据
-        for (Long id : ids) {
-            dishMapper.deleteById(id);
-            //删除关联口味数据
-            dishFlavorMapper.deleteByDishId(id);
-        }
+//        for (Long id : ids) {
+//            dishMapper.deleteById(id);
+//            //删除关联口味数据
+//            dishFlavorMapper.deleteByDishId(id);
+//        }
 
-        //删除口味数据
+        //根据菜品id集合批量删除
+        dishMapper.deleteByIds(ids);
+
+        dishFlavorMapper.deleteByDishIds(ids);
+
 
     }
 

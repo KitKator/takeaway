@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface DishMapper {//直接放在接口名上Alt加回车，有个直接创建xml的，自己选路径就行了
 
@@ -36,6 +38,8 @@ public interface DishMapper {//直接放在接口名上Alt加回车，有个直�
 
     @Delete("delete from dish where id = #{id}")
     void deleteById(Long id);
+
+    void deleteByIds(List<Long> ids);
 
 
     //MySQL的Mapper映射xml文件里的sql语句提示

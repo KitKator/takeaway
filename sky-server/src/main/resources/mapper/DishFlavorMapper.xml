@@ -9,4 +9,10 @@
         <!--前端传来的dishflavor中的DishFlavor的dishid属性没有值，是在前面遍历赋值的
         -->
     </insert>
+    <delete id="deleteByDishIds">
+        delete from dish_flavor where dish_id
+        <foreach collection="dishIds" open="(" close=")" separator="," item="dishId">
+            #{dishId}
+        </foreach>
+    </delete>
 </mapper>
