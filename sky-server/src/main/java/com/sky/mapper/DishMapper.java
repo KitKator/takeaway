@@ -41,6 +41,13 @@ public interface DishMapper {//直接放在接口名上Alt加回车，有个直�
 
     void deleteByIds(List<Long> ids);
 
+    /**
+     * 根据id动态修改菜品数据
+     * @param dish
+     */
+    @AutoFill(value = OperationType.UPDATE)
+    void update(Dish dish);
+
 
     //MySQL的Mapper映射xml文件里的sql语句提示
     //File–>Settings–>Languages & FrameworksFile–>SQL Dialects
